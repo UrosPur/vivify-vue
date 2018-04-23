@@ -1,5 +1,22 @@
 <template>
     <div>
+
+        <form @submit.prevent="saveContact">
+
+            <label>First Name</label>
+            <input v-model="newContact.firstName" type="text" placeholder="First Name">
+
+            <label>Last Name</label>
+            <input v-model="newContact.lastName" type="text" placeholder="Last Name">
+
+            <label>Email</label>
+            <input v-model="newContact.email" type="email" placeholder="email"/>
+
+            <button  type="submit">Add Contact</button>
+
+        </form>
+
+
         It works!
 
         <table>
@@ -12,12 +29,11 @@
             </thead>
 
             <tbody>
-            <tr v-for="(contact,key) in contacts" :key="key"
-                v-if="contact.firstName === 'Mirko'">
+            <tr v-for="(contact,key) in contacts" :key="key">
 
-            <td >{{ contact.firstName }}</td>
-            <td>{{ contact.lastName }}</td>
-            <td>{{ contact.email }}</td>
+                <td>{{ contact.firstName }}</td>
+                <td>{{ contact.lastName }}</td>
+                <td>{{ contact.email }}</td>
             </tr>
 
             </tbody>
@@ -30,6 +46,8 @@
 
 
 <script>
+
+
     export default {
         name: 'ContactList',
         data() {
@@ -58,9 +76,30 @@
                         email: 'sima@gmail.com'
                     },
 
-                ]
+                ],
+
+                newContact:{
+
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                }
 
             }
+
+        },
+
+        methods: {
+            saveContact(){
+
+                this.contacts.push(this.newContact)
+
+                this.newContact = {}
+
+            }
+
         }
+
+
     }
 </script>
