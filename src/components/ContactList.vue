@@ -12,8 +12,10 @@
             </thead>
 
             <tbody>
-            <tr v-for="(contact,key) in contacts" :key="key">
-            <td>{{ contact.firstName }}</td>
+            <tr v-for="(contact,key) in contacts" :key="key"
+                v-if="contact.firstName === 'Mirko'">
+
+            <td >{{ contact.firstName }}</td>
             <td>{{ contact.lastName }}</td>
             <td>{{ contact.email }}</td>
             </tr>
@@ -44,13 +46,16 @@
                         firstName: 'Marko',
                         lastName: 'Markovic',
                         email: 'marko@gmail.com'
-
                     },
                     {
                         firstName: 'Pero',
                         lastName: 'Petrovic',
                         email: 'pero@gmail.com'
-
+                    },
+                    {
+                        firstName: 'Sima',
+                        lastName: 'Simic',
+                        email: 'sima@gmail.com'
                     },
 
                 ]
